@@ -2,11 +2,11 @@
   <h3>
     i18n Test ({{ appLang }})
   </h3>
-  <button @click="setAppLang('zh')" style="margin-right:5px;">
-    zh
+  <button @click="setAppLang('zh-cn')" style="margin-right:5px;">
+    zh-cn
   </button>
-  <button @click="setAppLang('en')">
-    en
+  <button @click="setAppLang('en-us')">
+    en-us
   </button>
   <p>
     {{ $t('message') }}
@@ -45,10 +45,10 @@ export default defineComponent({
 
 <i18n>
 {
-  "en": {
+  "en-us": {
     "hello": "Hello, i18n in \"setup\""
   },
-  "zh": {
+  "zh-cn": {
     "hello": "你好，“setup” 中的 i18n"
   }
 }
