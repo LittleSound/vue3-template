@@ -1,7 +1,4 @@
 <template>
-  <h1>
-    {{ appLang }}
-  </h1>
   <div id="nav">
     <router-link to="/">Home</router-link> |
     <router-link to="/about">About</router-link>
@@ -10,13 +7,14 @@
 </template>
 
 <script lang="ts">
-import { computed, getCurrentInstance, ref } from 'vue'
+import { computed, getCurrentInstance } from 'vue'
 import { useStore } from '@/store'
 
 export default {
   name: 'App',
   setup () {
     const appLang = initAppLang()
+    console.log('local lang:', appLang.value)
     return {
       appLang
     }
@@ -26,12 +24,19 @@ export default {
 /** 初始化语言 */
 function initAppLang () {
   const { proxy } = getCurrentInstance() as any
-  const lang = ref(proxy.$i18n.locale)
   const store = useStore()
   const appLang = computed(() => store.state.app.lang)
   const setAppLang = (lang: string) => store.dispatch('setAppLang', lang)
-  setAppLang(lang.value)
+
+  const localeLang: string = getLocaleLang() || proxy.$i18n.locale
+  setAppLang(localeLang)
   return appLang
+}
+
+function getLocaleLang () {
+  const localStore = window.localStorage || localStorage
+  if (localStore && localStore.setItem) return localStore.getItem('locale_lang')
+  return ''
 }
 </script>
 

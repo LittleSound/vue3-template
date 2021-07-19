@@ -28,7 +28,6 @@ export default <Module<AppModuleTypes, RootStateTypes>>{
 
       commit('mSetAppLang', lang)
       i18n.global.locale.value = lang
-      localStore.lang
     }
   }
 }
