@@ -11,6 +11,13 @@
         <el-button>默认按钮</el-button>
         <el-button type="primary">主要按钮</el-button>
     </div>
+    <div>
+      <h3>
+        Svgo Test
+      </h3>
+      <svg-icon icon-class="vue" style="font-size: 60px;color: #41b883;" />
+      <svg-icon icon-class="vue-color" style="font-size: 65px;" />
+    </div>
   </div>
 </template>
 
